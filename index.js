@@ -39,7 +39,7 @@ As a user, I should be able to do [view the selections together]
 */
 
 // Event Listeners
-function selectCivz() {
+function selectItems() {
   let selected = document.querySelector("#selected");
   let p = document.createElement("p");
   p.innerText = this.innerText;
@@ -47,11 +47,11 @@ function selectCivz() {
 }
 
 // Other Functions
-function addCivToChoices(item, wrapper) {
+function addItemToChoices(item, wrapper) {
   let p = document.createElement("p");
   let button = document.createElement("button");
   p.innerText = item.name;
-  button.addEventListener("click", selectCivz);
+  button.addEventListener("click", selectItems);
   button.append(p);
   wrapper.append(button);
 }
@@ -65,17 +65,18 @@ function clearList(list) {
 
 // Rendering Functions
 
-function renderGroup(data) {
-  console.log(data.civilizations);
-  let arr = data.civilizations;
+function renderGroup(data, group) {
+  console.log(data[group]);
+  let arr = data[group];
   let wrapper = document.querySelector(".wrapper");
-  arr.forEach((item) => addCivToChoices(item, wrapper));
+  arr.forEach((item) => addItemToChoices(item, wrapper));
+  //clearList(wrapper);
 }
 
 function getGroup(group) {
   fetch(`${FETCH_URL}${group}`)
     .then((res) => res.json())
-    .then((data) => renderGroup(data))
+    .then((data) => renderGroup(data, group))
     .catch((err) => console.log(err));
 }
 
