@@ -1,0 +1,79 @@
+{
+    "civilizations": [
+      {
+        "id": 1, 
+        "name": "Aztecs", 
+        "expansion": "The Conquerors", 
+        "army_type": "Infantry and Monk", 
+        "unique_unit": [
+          "https://age-of-empires-2-api.herokuapp.com/api/v1/unit/jaguar_warrior"
+        ], 
+        "unique_tech": [
+          "https://age-of-empires-2-api.herokuapp.com/api/v1/technology/garland_wars"
+        ], 
+        "team_bonus": "Relics generate +33% gold", 
+        "civilization_bonus": [
+          "Villagers carry +5", 
+          "Military units created 15% faster", 
+          "+5 Monk hit points for each Monastery technology", 
+          "Loom free"
+        ]
+      }, 
+      {
+        "id": 2, 
+        "name": "Japanese", 
+        "expansion": "Age of Kings", 
+        "army_type": "Infantry", 
+        "unique_unit": [
+          "https://age-of-empires-2-api.herokuapp.com/api/v1/unit/samurai"
+        ], 
+        "unique_tech": [
+          "https://age-of-empires-2-api.herokuapp.com/api/v1/technology/kataparuto"
+        ], 
+        "team_bonus": "Galleys have +50% line of sight", 
+        "civilization_bonus": [
+          "Fishing Ships have 2x HP and +2 pierce armor", 
+          "Fishing Ships work +5% faster in Dark Age/ +10% in Feudal Age/ +15% in Castle Age/ +20% in Imperial Age", 
+          "Lumber Camps / Mining Camps / Mills are 50% cheaper", 
+          "Infantry attack 25% faster (starting in Feudal Age)"
+        ]
+      }, {
+        "id": 3, 
+        "name": "Mayans", 
+        "expansion": "The Conquerors", 
+        "army_type": "Archer", 
+        "unique_unit": [
+          "https://age-of-empires-2-api.herokuapp.com/api/v1/unit/plumed_archer"
+        ], 
+        "unique_tech": [
+          "https://age-of-empires-2-api.herokuapp.com/api/v1/technology/el_dorado"
+        ], 
+        "team_bonus": "Walls are 50% cheaper", 
+        "civilization_bonus": [
+          "Start game with 1 extra villager but -50 food", 
+          "Natural resources last 20% longer", 
+          "Archers cost -10% in Feudal Age/ -20% in Castle Age/ -30% in Imperial Age"
+        ]
+      }, 
+      {
+      "id": 4, 
+      "name": "Koreans", 
+      "expansion": "The Conquerors", 
+      "army_type": "Tower and naval", 
+      "unique_unit": [
+        "https://age-of-empires-2-api.herokuapp.com/api/v1/unit/war_wagon", 
+        "https://age-of-empires-2-api.herokuapp.com/api/v1/unit/turtle_ship"
+      ], 
+      "unique_tech": [
+        "https://age-of-empires-2-api.herokuapp.com/api/v1/technology/shinkichon"
+      ], 
+      "team_bonus": "Mangonel line has +1 range", 
+      "civilization_bonus": [
+        "Villagers have +3 line of sight", 
+        "Stone miners work 20% faster", 
+        "Guard Tower and Keep upgrades are free", 
+        "Towers (except bombard towers) have +1 range in Castle Age/ +2 in Imperial Age"
+      ]
+    }
+]
+}
