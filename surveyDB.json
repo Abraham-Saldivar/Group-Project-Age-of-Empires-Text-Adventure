@@ -1,0 +1,52 @@
+{
+  "responses": [
+    {
+      "civilizations": [
+        "Celts"
+      ],
+      "units": [
+        "King",
+        "Capped Ram",
+        "Transport Ship",
+        "Trebuchet (packed)",
+        "Elite Skirmisher"
+      ],
+      "structures": [
+        "Monastery",
+        "Mining Camp",
+        "Dock"
+      ],
+      "technologies": [
+        "Heavy Demolition Ship",
+        "Plate Mail Armor",
+        "Padded Archer Armor",
+        "Scale Barding Armor"
+      ],
+      "id": 1
+    },
+    {
+      "civilizations": [
+        "Celts"
+      ],
+      "units": [
+        "Galleon",
+        "Elite Longboat",
+        "Champion",
+        "Heavy Cavalry Archer",
+        "Cavalry Archer"
+      ],
+      "structures": [
+        "Town Center",
+        "Barracks",
+        "Archery Range"
+      ],
+      "technologies": [
+        "Plate Mail Armor",
+        "Galleon",
+        "Shipwright",
+        "Scale Barding Armor"
+      ],
+      "id": 2
+    }
+  ]
+}

@@ -50,7 +50,56 @@ button.addEventListener("click", () => {
 });
 */
 // API location constants
-const FETCH_URL = `https://age-of-empires-2-api.herokuapp.com/api/v1/`;
+const GET_URL = `https://age-of-empires-2-api.herokuapp.com/api/v1/`;
+const POST_URL = `http://localhost:3000/responses`;
+
+const HEADERS = {
+  "Content-Type": "application/json",
+  Accept: "application/json"
+};
+
+function displayEnding(data) {
+  // This alert is intentional. It is an alternative to putting a message on the DOM
+  alert("Thanks for taking the survey. You can take it again if you choose.");
+  /*
+  let endMessage = document.createElement("p");
+  endMessage.innerText =
+    "Thanks for taking the survey. Your response has been saved.";
+  document.body.append(endMessage);
+  */
+}
+
+function toArray(list) {
+  let array = [];
+  list.forEach((item) => array.push(item.innerText));
+
+  return array;
+}
+
+function sendSurveyResponse() {
+  let civilizations = document.querySelectorAll("#selected-civilizations > li");
+  let civArray = toArray(civilizations);
+  let units = document.querySelectorAll("#selected-units > li");
+  let unitArray = toArray(units);
+  let structures = document.querySelectorAll("#selected-structures > li");
+  let structureArray = toArray(structures);
+  let technologies = document.querySelectorAll("#selected-technologies > li");
+  let techArray = toArray(technologies);
+
+  fetch(POST_URL, {
+    method: "POST",
+    headers: HEADERS,
+    body: JSON.stringify({
+      civilizations: civArray,
+      units: unitArray,
+      structures: structureArray,
+      technologies: techArray
+    })
+  })
+    .then((res) => res.json())
+    .then((data) => displayEnding(data))
+    .catch((err) => console.log(err));
+}
 
 function selectItems() {
   let selected = document.querySelector(
@@ -76,9 +125,10 @@ function selectItems() {
     let p = document.createElement("p");
     p.innerText = "*********************";
     let p2 = document.createElement("p");
-    p2.innerText = "Thanks for Playing";
+    p2.innerText = "Thanks for taking the survey";
     selected.append(p);
     selected.append(p2);
+    sendSurveyResponse();
   }
 }
 
@@ -94,7 +144,6 @@ function addItemToChoices(item, wrapper) {
 
 // not used yet
 function clearList(list) {
-  console.log(list.lastChild);
   while (list.lastChild !== null) {
     list.removeChild(list.lastChild);
   }
@@ -114,7 +163,7 @@ function renderGroup(data, group) {
 }
 
 function getGroup(group) {
-  fetch(`${FETCH_URL}${group.name}`)
+  fetch(`${GET_URL}${group.name}`)
     .then((res) => res.json())
     .then((data) => renderGroup(data, group.name))
     .catch((err) => console.log(err));
