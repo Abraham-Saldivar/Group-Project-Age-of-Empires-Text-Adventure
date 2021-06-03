@@ -1,72 +1,8 @@
-/*
-This is a stylesheet from another project
-It probably doesn't make sense
-You don't have to use it
-But it might be a good starting point
-*/
-html {
-  height: 100%;
+ul {
+  font-size: 1.25em;
 }
 
-body {
-  background-image: url("AgeOfEmpires.jpg");
-  background-size: cover;
-  margin: 0;
-  padding: 0 20px;
-  display: flex;
-  justify-content: center;
+ul > li {
+  font-size: .875em;
+  
 }
-
-* {
-  box-sizing: border-box;
-  font-family: sans-serif;
-}
-
-  .wrapper{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #aaaaaa;
-  }
-  /*
-  > p {
-    color: #ffffff;
-  }
-*/
-  #selected {
-    color: #ffffff;
-    font-size: 2rem;
-    margin: 0;
-  }
-
-  h1 {
-    
-    background-image: linear-gradient(180deg, #ffffff, #87f1ff);
-    background-size: 100%;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-background-clip: text;
-    -mozz-text-fill-color: transparent;
-    filter: drop-shadow(2px 2px #0085a3);
-    font-size: 70px;
-    font-weight: 400;
-    text-align: center;
-    margin: 20px;
-  }
-
-  .start,
-  .next {
-    cursor: pointer;
-    background: linear-gradient(180deg, #ffffff, #ffcc91);
-    border: 2px solid #d38558;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    height: 40px;
-    margin: 20px 0;
-    padding: 0 40px;
-  }
-
-  .start {
-    max-width: 200px;
-  }

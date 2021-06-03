@@ -71,6 +71,8 @@ function selectItems() {
   if (categoriesIndex < CATEGORIES.length) {
     getGroup(CATEGORIES[categoriesIndex]);
   } else {
+    let choicesH1 = document.querySelector("#choices-h1");
+    clearList(choicesH1);
     let p = document.createElement("p");
     p.innerText = "*********************";
     let p2 = document.createElement("p");
@@ -101,11 +103,14 @@ function clearList(list) {
 // Rendering Functions
 
 function renderGroup(data, group) {
-  //console.log(data[group]);
   let arr = data[group];
   let wrapper = document.querySelector(".wrapper");
+  let choicesH1 = document.querySelector("#choices-h1");
+  clearList(choicesH1);
+  let p = document.createElement("p");
+  p.innerText = `Select ${CATEGORIES[categoriesIndex].max} from the following`;
+  choicesH1.appendChild(p);
   arr.forEach((item) => addItemToChoices(item, wrapper));
-  //clearList(wrapper);
 }
 
 function getGroup(group) {
@@ -116,6 +121,8 @@ function getGroup(group) {
 }
 
 function startGame() {
+  let startBtn = document.querySelector("#start");
+  startBtn.disabled = true;
   let choicesH1 = document.querySelector("#choices-h1");
   choicesH1.hidden = false;
   let selectedH1 = document.querySelector("#selected-h1");
