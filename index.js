@@ -7,32 +7,69 @@
 // event listeners
 
 /* element.addEventListener("click", myFunction);
-
 function myFunction() {
   alert ("Hello World!");
 }
  */
-
+/*
 let button = document.querySelector("button");
 button.addEventListener("click", () => {
   console.log("Button clicked");
 });
+*/
+/* 
+// Base Requirements
+As a user, I should be able to [select a civilization] // Done
+As a user, I should be able to do [select a small number of units] // How Many?
+As a user, I should be able to do [select a number of structures]  // How Many?
+As a user, I should be able to do [select technologies]  // How Many?
+As a user, I should be able to do [view the selections together]
+*/
 
+// Event Listeners
 
+// Game Constants
+const MAX_CIVZS = 1;
+const MAX_UNITS = 5;
+const MAX_STRUCTURES = 3;
+const MAX_TECHS = 4;
+
+const CATEGORIES = [
+  { name: "civilizations", max: MAX_CIVZS },
+  { name: "units", max: MAX_UNITS },
+  { name: "structures", max: MAX_STRUCTURES },
+  { name: "technologies", max: MAX_TECHS }
+];
+
+// categoriesIndex global variable
+let categoriesIndex = 0;
+/*
+let button = document.querySelector("button");
+button.addEventListener("click", () => {
+  console.log("Button clicked");
+});
+*/
 // API location constants
 const FETCH_URL = `https://age-of-empires-2-api.herokuapp.com/api/v1/`;
 
 function selectItems() {
-  let selected = document.querySelector("#selected");
-  let oldList = document.querySelector("#choices");
+  let selected = document.querySelector(
+    `#selected-${CATEGORIES[categoriesIndex].name}`
+  );
+  let li = document.createElement("li");
+  li.innerText = this.innerText;
+  selected.append(li);
+  let numSelected = selected.children.length;
+  if (numSelected < CATEGORIES[categoriesIndex].max) {
+    return;
+  }
+
+  let oldList = document.querySelector("#choices-div");
   clearList(oldList);
-  let p = document.createElement("p");
-  p.innerText = this.innerText;
-  selected.append(p);
-  index++;
-  console.log(index);
-  if (index < CATEGORIES.length) {
-    getGroup(CATEGORIES[index]);
+
+  categoriesIndex++;
+  if (categoriesIndex < CATEGORIES.length) {
+    getGroup(CATEGORIES[categoriesIndex]);
   } else {
     let p = document.createElement("p");
     p.innerText = "*********************";
@@ -55,7 +92,8 @@ function addItemToChoices(item, wrapper) {
 
 // not used yet
 function clearList(list) {
-  while (list.lastChild) {
+  console.log(list.lastChild);
+  while (list.lastChild !== null) {
     list.removeChild(list.lastChild);
   }
 }
@@ -71,13 +109,22 @@ function renderGroup(data, group) {
 }
 
 function getGroup(group) {
-  fetch(`${FETCH_URL}${group}`)
+  fetch(`${FETCH_URL}${group.name}`)
     .then((res) => res.json())
-    .then((data) => renderGroup(data, group))
+    .then((data) => renderGroup(data, group.name))
     .catch((err) => console.log(err));
 }
 
-const CATEGORIES = ["civilizations", "units", "structures", "technologies"];
-//CATEGORIES.forEach((group) => getGroup(group));
-let index = 0;
-getGroup(CATEGORIES[0]);
+function startGame() {
+  let choicesH1 = document.querySelector("#choices-h1");
+  choicesH1.hidden = false;
+  let selectedH1 = document.querySelector("#selected-h1");
+  selectedH1.hidden = false;
+  let selectedDiv = document.querySelector("#selected-div");
+  selectedDiv.hidden = false;
+  getGroup(CATEGORIES[0]);
+}
+document.addEventListener("DOMContentLoaded", () => {
+  let startBtn = document.querySelector("#start");
+  startBtn.addEventListener("click", startGame);
+});
