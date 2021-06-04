@@ -47,6 +47,56 @@
         "Scale Barding Armor"
       ],
       "id": 2
+    },
+    {
+      "name": {},
+      "civilizations": [
+        "Japanese"
+      ],
+      "units": [
+        "Heavy Cavalry Archer",
+        "Elite Cataphract",
+        "Cataphract",
+        "Berserk",
+        "Onager"
+      ],
+      "structures": [
+        "Monastery",
+        "Lumber Camp",
+        "Mill"
+      ],
+      "technologies": [
+        "Scale Barding Armor",
+        "Shipwright",
+        "Ligth Cavalry",
+        "El Dorado"
+      ],
+      "id": 3
+    },
+    {
+      "name": "Sean Shaughnessy",
+      "civilizations": [
+        "Japanese"
+      ],
+      "units": [
+        "Cavalry Archer",
+        "Elite Longboat",
+        "Fishing Ship",
+        "Trade Cog",
+        "Trebuchet"
+      ],
+      "structures": [
+        "Siege Workshop",
+        "Mining Camp",
+        "Mining Camp"
+      ],
+      "technologies": [
+        "Ring Archer Armor",
+        "Atonement",
+        "Herbal Medicine",
+        "Spies"
+      ],
+      "id": 4
     }
   ]
 }

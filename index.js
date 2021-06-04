@@ -77,6 +77,7 @@ function toArray(list) {
 }
 
 function sendSurveyResponse() {
+  let nameInput = document.querySelector("#name-input").value;
   let civilizations = document.querySelectorAll("#selected-civilizations > li");
   let civArray = toArray(civilizations);
   let units = document.querySelectorAll("#selected-units > li");
@@ -90,6 +91,7 @@ function sendSurveyResponse() {
     method: "POST",
     headers: HEADERS,
     body: JSON.stringify({
+      name: nameInput,
       civilizations: civArray,
       units: unitArray,
       structures: structureArray,
@@ -169,8 +171,11 @@ function getGroup(group) {
     .catch((err) => console.log(err));
 }
 
-function startGame() {
-  let startBtn = document.querySelector("#start");
+function startGame(event) {
+  event.preventDefault();
+  let nameInput = document.querySelector("#name-input");
+  nameInput.disabled = true;
+  let startBtn = document.querySelector("#start-btn");
   startBtn.disabled = true;
   let choicesH1 = document.querySelector("#choices-h1");
   choicesH1.hidden = false;
@@ -181,6 +186,6 @@ function startGame() {
   getGroup(CATEGORIES[0]);
 }
 document.addEventListener("DOMContentLoaded", () => {
-  let startBtn = document.querySelector("#start");
+  let startBtn = document.querySelector("#start-btn");
   startBtn.addEventListener("click", startGame);
 });
