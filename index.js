@@ -33,6 +33,7 @@ const MAX_CIVZS = 1;
 const MAX_UNITS = 5;
 const MAX_STRUCTURES = 3;
 const MAX_TECHS = 4;
+const DEFAULT_NAME = "Anonymous";
 
 const CATEGORIES = [
   { name: "civilizations", max: MAX_CIVZS },
@@ -50,7 +51,8 @@ button.addEventListener("click", () => {
 });
 */
 // API location constants
-const GET_URL = `https://age-of-empires-2-api.herokuapp.com/api/v1/`;
+const GET_API_URL = `https://age-of-empires-2-api.herokuapp.com/api/v1/`;
+const GET_SURVEY_URL = `http://localhost:3000/responses`;
 const POST_URL = `http://localhost:3000/responses`;
 
 const HEADERS = {
@@ -60,13 +62,38 @@ const HEADERS = {
 
 function displayEnding(data) {
   // This alert is intentional. It is an alternative to putting a message on the DOM
-  alert("Thanks for taking the survey. You can take it again if you choose.");
+  let nameInput = document.querySelector("#name-input").value;
+  alert(
+    `Thanks, ${nameInput}, for taking the survey. You can take it again if you choose.`
+  );
   /*
   let endMessage = document.createElement("p");
   endMessage.innerText =
     "Thanks for taking the survey. Your response has been saved.";
   document.body.append(endMessage);
   */
+}
+
+function isValidName(name) {
+  return typeof name === "string" && name.length > 0;
+}
+
+function buildSurveyList(surveys) {
+  console.log(surveys);
+  let surveyNamesUl = document.querySelector("#survey-names");
+  surveys.forEach((survey) => {
+    let li = document.createElement("li");
+    let name = isValidName(survey.name) ? survey.name : DEFAULT_NAME;
+    li.textContent = name;
+    surveyNamesUl.appendChild(li);
+  });
+}
+
+function showSurveyList() {
+  fetch(GET_SURVEY_URL)
+    .then((res) => res.json())
+    .then((surveys) => buildSurveyList(surveys))
+    .catch((err) => console.log(err));
 }
 
 function toArray(list) {
@@ -165,7 +192,7 @@ function renderGroup(data, group) {
 }
 
 function getGroup(group) {
-  fetch(`${GET_URL}${group.name}`)
+  fetch(`${GET_API_URL}${group.name}`)
     .then((res) => res.json())
     .then((data) => renderGroup(data, group.name))
     .catch((err) => console.log(err));
@@ -188,4 +215,6 @@ function startGame(event) {
 document.addEventListener("DOMContentLoaded", () => {
   let startBtn = document.querySelector("#start-btn");
   startBtn.addEventListener("click", startGame);
+  let showSurveyListBtn = document.querySelector("#show-survey-list-btn");
+  showSurveyListBtn.addEventListener("click", showSurveyList);
 });

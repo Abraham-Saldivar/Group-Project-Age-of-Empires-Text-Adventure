@@ -97,6 +97,31 @@
         "Spies"
       ],
       "id": 4
+    },
+    {
+      "name": "John Doe",
+      "civilizations": [
+        "Byzantines"
+      ],
+      "units": [
+        "Transport Ship",
+        "Elite Cannon Galleon",
+        "Eagle Warrior",
+        "Elite Cataphract",
+        "Elite Chu Ko Nu"
+      ],
+      "structures": [
+        "Town Center",
+        "Market",
+        "Market"
+      ],
+      "technologies": [
+        "Shipwright",
+        "Heated Shot",
+        "Guard Tower",
+        "Bloodlines"
+      ],
+      "id": 5
     }
   ]
 }
